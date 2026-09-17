@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LendingPlatform.Api\LendingPlatform.Api.csproj" />
     <ProjectReference Include="..\LendingPlatform.Domain\LendingPlatform.Domain.csproj" />
   </ItemGroup>
 

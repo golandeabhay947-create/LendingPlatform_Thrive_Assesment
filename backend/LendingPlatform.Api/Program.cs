@@ -1,11 +1,18 @@
+using System.Text.Json.Serialization;
+using LendingPlatform.Api.Services;
+using LendingPlatform.Domain.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// HTTP endpoints will be organized as controllers as the API grows.
-builder.Services.AddControllers();
+builder.Services
+    .AddControllers()
+    .AddJsonOptions(options =>
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+builder.Services.AddSingleton<LoanDecisionService>();
+builder.Services.AddSingleton<LoanApplicationStore>();
 
 var app = builder.Build();
 
-app.UseHttpsRedirection();
 app.MapControllers();
 
 app.Run();

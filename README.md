@@ -30,4 +30,8 @@ The React development server prints the local address to open in a browser.
 
 ## Scope
 
-This repository currently contains development setup only. It deliberately has no lending rules, database, authentication, backend integration, or loan UI.
+This repository includes the domain lending rules and an in-memory backend API. It deliberately has no database, authentication, backend/frontend connection, or loan UI.
+
+## Statistics assumption
+
+`totalLoanValue` represents the value of successful applications only. This treats a loan as written only after a successful decision. `meanLtv` includes both successful and declined applications.

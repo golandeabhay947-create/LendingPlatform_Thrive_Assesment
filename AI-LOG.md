@@ -71,3 +71,61 @@ The running local API process was stopped and the build was rerun successfully.
 - Credit score must be between 1 and 999.
 - Validation occurs before lending decision rules.
 - Successful means the supplied lending rules are satisfied only.
+
+
+
+## Step 3 — Backend API and In-Memory Statistics
+
+AI Tool: Codex
+
+### Prompt Purpose
+Connect the existing domain logic to an ASP.NET Core Web API and add
+in-memory application storage and statistics.
+
+### What Codex Did
+- Added POST /api/loans/applications.
+- Added GET /api/loans/statistics.
+- Added request and response models.
+- Added in-memory application storage.
+- Connected the API to the existing LoanDecisionService.
+- Added dependency injection.
+- Added API/application-layer tests.
+- Added validation for invalid input.
+- Kept lending business rules in the Domain layer.
+- Did not modify the React frontend.
+
+### Testing / Verification
+- Solution build: Passed
+- Warnings: 0
+- Errors: 0
+- xUnit tests: 35 passed
+- Failed: 0
+
+Manual API verification:
+- Successful application: Passed
+- Declined application: Passed
+- Statistics: Passed
+- Invalid input / HTTP 400: Passed
+
+### Statistics Verification
+After one successful 50% LTV application and one declined 80% LTV
+application:
+
+successfulApplications = 1
+declinedApplications = 1
+totalLoanValue = 500000
+meanLtv = 65.0
+
+This confirmed that mean LTV includes both successful and declined
+applications.
+
+### Iteration / Correction
+The initial live API verification encountered an HTTPS-redirection
+configuration issue when running the API on an explicit HTTP port.
+The unused HTTPS redirection was removed and the build, tests, and
+live API checks were rerun successfully.
+
+### Assumptions
+- totalLoanValue means the sum of successful applications only.
+- meanLtv includes successful and declined applications.
+- With no applications, statistics return 0, including mean LTV.
