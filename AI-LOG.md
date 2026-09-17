@@ -25,3 +25,49 @@ No lending business logic, LTV calculation, statistics, database, authentication
 
 ### Corrections / Iterations
 No corrections were required during the initial setup.
+
+
+
+
+## Step 2 — Domain Model, LTV and Loan Decision Logic
+
+AI Tool: Codex
+
+### Prompt Purpose
+Implement the domain model, LTV calculation, loan decision rules, input validation, and unit tests without adding API or frontend functionality.
+
+### What Codex Did
+- Created LoanApplication entity.
+- Created LoanDecision enum.
+- Created LoanDecisionService.
+- Implemented LTV calculation.
+- Implemented the supplied lending decision rules.
+- Added validation for loan amount, asset value, and credit score.
+- Created comprehensive xUnit tests.
+- Removed the default UnitTest1.cs placeholder.
+
+### Testing / Verification
+- Build: Passed
+- Warnings: 0
+- Errors: 0
+- Tests: 25 passed
+- Failed: 0
+- Skipped: 0
+
+### Human Review
+Reviewed the reported business rules and boundary cases.
+The logic correctly distinguishes:
+- LTV < 60% from LTV = 60% for loans below £1,000,000.
+- LTV <= 60% for loans of £1,000,000 or more.
+- LTV >= 90% as declined for loans below £1,000,000.
+
+### Iteration / Correction
+The initial full build encountered a locked API executable from the earlier setup.
+The running local API process was stopped and the build was rerun successfully.
+
+### Assumptions
+- Loan amount <= 0 is treated as technically invalid.
+- Asset value <= 0 is invalid because LTV cannot be calculated.
+- Credit score must be between 1 and 999.
+- Validation occurs before lending decision rules.
+- Successful means the supplied lending rules are satisfied only.
