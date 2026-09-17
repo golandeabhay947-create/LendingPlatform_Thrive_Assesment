@@ -1,0 +1,24 @@
+# .NET build output
+[Bb]in/
+[Oo]bj/
+
+# Node / React
+frontend/node_modules/
+frontend/dist/
+
+# Editor files
+.vscode/
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# User and operating-system files
+*.user
+*.suo
+.DS_Store
+Thumbs.db
+
+# Local environment files
+.env
+.env.*
+!.env.example
