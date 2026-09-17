@@ -210,4 +210,40 @@ Reviewed the frontend for:
 - Statistics display: Verified
 
 ### Iteration / Corrections
-[Add any actual correction or issue found during Step 4 here. If there were no corrections, write: "No corrections were required."]
+The API required a local-development CORS policy so the Vite frontend could call it from a separate origin. No further Step 4 corrections were recorded.
+
+
+## Step 5 — Testing, Review and Bug Fixing
+
+AI Tool: Codex
+
+### What Codex Reviewed
+- Reviewed the domain lending rules, API validation and HTTP responses, in-memory statistics, CORS configuration, and frontend/API separation.
+- Confirmed that lending decisions remain in `LoanDecisionService`; the React frontend performs technical input validation only and displays API results.
+- Reviewed the repository for debug logging, secrets, duplicate decision logic, and unnecessary infrastructure.
+
+### Testing / Verification
+- Full .NET solution build: passed with 0 warnings and 0 errors.
+- xUnit suite: passed, 35/35 tests.
+- React production build: passed.
+- Live API checks: successful POST, declined POST, invalid POST (HTTP 400 with validation details), statistics GET, and CORS preflight from the Vite origin.
+- Browser checks: empty-form validation, successful and declined submissions, statistics updates, local network-error feedback, and narrow/mobile layout.
+
+### Corrections Made
+- Replaced a static "service available" label with a neutral service label because the UI does not perform a health check.
+- Changed the statistics label from "Mean average LTV" to "Mean LTV".
+- Improved the API client so an API `{ error: ... }` response is shown to the user rather than replaced by a generic message.
+
+
+## Step 6 — Final Cleanup and Submission Preparation
+
+AI Tool: Codex
+
+### What Codex Did
+- Completed the README run/test commands so they work from a fresh checkout without assuming restored packages.
+- Reviewed repository status and retained the existing project-specific frontend asset removals and configuration changes.
+- Confirmed that the README documents architecture, rules, LTV, running the services, endpoints, examples, testing, statistics, and assumptions.
+
+### Final Verification
+- Re-ran the full solution build, xUnit suite, and React production build after cleanup.
+- Did not create a Git commit.

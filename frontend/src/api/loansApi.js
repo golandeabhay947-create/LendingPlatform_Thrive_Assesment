@@ -26,6 +26,10 @@ function getErrorMessage(body, status) {
     return messages[0] || 'Please check the application details and try again.'
   }
 
+  if (body?.error) {
+    return body.error
+  }
+
   return 'The lending service could not complete your request. Please try again.'
 }
 

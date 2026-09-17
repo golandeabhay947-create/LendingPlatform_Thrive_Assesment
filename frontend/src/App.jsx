@@ -57,7 +57,7 @@ function App() {
           </div>
           <div className="hero-detail" aria-label="Service status">
             <span className="status-dot" aria-hidden="true" />
-            Decision service available
+            Lending decision service
           </div>
         </section>
 

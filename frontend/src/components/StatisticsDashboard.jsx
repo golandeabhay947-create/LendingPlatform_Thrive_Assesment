@@ -20,7 +20,7 @@ function StatisticsDashboard({ statistics, isLoading, error }) {
     ['Successful applications', values.successfulApplications],
     ['Declined applications', values.declinedApplications],
     ['Total loan value', currencyFormatter.format(values.totalLoanValue)],
-    ['Mean average LTV', `${Number(values.meanLtv).toFixed(1)}%`],
+    ['Mean LTV', `${Number(values.meanLtv).toFixed(1)}%`],
   ]
 
   return (
