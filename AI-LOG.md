@@ -129,3 +129,85 @@ live API checks were rerun successfully.
 - totalLoanValue means the sum of successful applications only.
 - meanLtv includes successful and declined applications.
 - With no applications, statistics return 0, including mean LTV.
+
+
+## Step 4 — React Lending Workspace
+
+AI Tool: Codex
+
+### Prompt Purpose
+Build a professional banking-style React interface and connect it to the existing loan application and statistics API.
+
+### What Codex Did
+- Added a responsive lending application form with client-side technical validation.
+- Added a central API client with `VITE_API_BASE_URL` support and a local API default.
+- Added a clear decision and LTV result panel.
+- Added a portfolio statistics dashboard using the API response.
+- Added loading, empty-state, validation, and network-error messaging.
+- Added local development CORS support in API startup configuration.
+- Updated the README with separate frontend and backend run instructions.
+
+### UI / Design Decisions
+- Used a restrained navy, teal, white, and soft grey financial palette.
+- Used card-based application and portfolio sections with strong typography and clear spacing.
+- Kept visual treatment deliberately calm and professional, without external UI libraries, gradients, or decorative graphics.
+- Used semantic form controls, visible focus states, labels, and live regions for accessible feedback.
+
+### Testing / Verification
+- React production build: Passed.
+- API workflow verification: Passed.
+
+### Issues / Corrections
+- The starter API needed a CORS policy so the Vite development origin could call it locally.
+
+
+
+## Step 4 — React Frontend and Banking UI
+
+AI Tool: Codex
+
+### Prompt Purpose
+Build the React frontend for the Lending Platform and connect it to the existing ASP.NET Core API.
+
+The main requirements were:
+- Loan application form
+- API integration
+- Application decision display
+- LTV display
+- Lending statistics dashboard
+- Validation and error handling
+- Professional banking/lending-themed UI
+- No duplication of backend lending rules in React
+
+### What Codex Did
+- Created the React loan application interface.
+- Added fields for loan amount, secured asset value and credit score.
+- Connected the frontend to:
+  - POST `/api/loans/applications`
+  - GET `/api/loans/statistics`
+- Displayed successful/declined decisions and LTV.
+- Added statistics cards for successful applications, declined applications, total loan value and mean LTV.
+- Added loading and error handling.
+- Added a professional banking/financial-services visual design.
+- Kept lending business rules in the backend rather than duplicating them in React.
+- Updated frontend/API configuration and README as required.
+
+### Human Review
+Reviewed the frontend for:
+- Professional banking appearance
+- Clear loan application flow
+- Readability and spacing
+- API integration
+- Decision and statistics display
+- Responsive behaviour
+- Avoiding duplicated lending logic in the frontend
+
+### Testing / Verification
+- React production build: Passed
+- Frontend/backend API integration: Verified
+- Loan application submission: Verified
+- Decision and LTV display: Verified
+- Statistics display: Verified
+
+### Iteration / Corrections
+[Add any actual correction or issue found during Step 4 here. If there were no corrections, write: "No corrections were required."]
