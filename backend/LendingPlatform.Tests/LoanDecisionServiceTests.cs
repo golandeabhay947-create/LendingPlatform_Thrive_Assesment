@@ -92,6 +92,18 @@ public class LoanDecisionServiceTests
     }
 
     [Theory]
+    [InlineData(1)]
+    [InlineData(999)]
+    public void Evaluate_AcceptsCreditScoreAtAllowedRangeBoundaries(int creditScore)
+    {
+        var application = new LoanApplication(100_000m, 2_000_000m, creditScore);
+
+        var exception = Record.Exception(() => _service.Evaluate(application));
+
+        Assert.Null(exception);
+    }
+
+    [Theory]
     [InlineData(0)]
     [InlineData(-1)]
     public void Evaluate_ThrowsForNonPositiveLoanAmount(decimal loanAmount)
@@ -115,12 +127,15 @@ public class LoanDecisionServiceTests
         [599_999m, 1_000_000m, 750, LoanDecision.Successful],
         [599_999m, 1_000_000m, 749, LoanDecision.Declined],
         [600_000m, 1_000_000m, 800, LoanDecision.Successful],
+        [600_001m, 1_000_000m, 799, LoanDecision.Declined],
         [799_999m, 1_000_000m, 800, LoanDecision.Successful],
         [799_999m, 1_000_000m, 799, LoanDecision.Declined],
         [800_000m, 1_000_000m, 900, LoanDecision.Successful],
+        [800_001m, 1_000_000m, 899, LoanDecision.Declined],
         [899_999m, 1_000_000m, 900, LoanDecision.Successful],
         [899_999m, 1_000_000m, 899, LoanDecision.Declined],
-        [900_000m, 1_000_000m, 999, LoanDecision.Declined]
+        [900_000m, 1_000_000m, 999, LoanDecision.Declined],
+        [900_001m, 1_000_000m, 999, LoanDecision.Declined]
     ];
 
     public static IEnumerable<object[]> MillionOrMoreCases =>

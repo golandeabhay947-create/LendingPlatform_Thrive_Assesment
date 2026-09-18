@@ -1,6 +1,17 @@
 @LendingPlatform.Api_HostAddress = http://localhost:5209
 
-GET {{LendingPlatform.Api_HostAddress}}/weatherforecast/
+POST {{LendingPlatform.Api_HostAddress}}/api/loans/applications
+Content-Type: application/json
+
+{
+  "loanAmount": 500000,
+  "assetValue": 1000000,
+  "creditScore": 800
+}
+
+###
+
+GET {{LendingPlatform.Api_HostAddress}}/api/loans/statistics
 Accept: application/json
 
 ###
